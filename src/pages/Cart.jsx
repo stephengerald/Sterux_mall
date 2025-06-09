@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 function Cart() {
   const { cart, dispatch } = useContext(CartContext)
 
-  if (cart.length === 0) return <div className="p-8">Your cart is empty.</div>
+  if (cart.length === 0) return <div className="p-8 text-center font-bold">Your cart is empty.</div>
 
   const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0)
 

@@ -10,10 +10,12 @@ import ProductDetails from './pages/ProductDetails.jsx'
 import Checkout from './pages/Checkout.jsx'
 import Login from './pages/Login.jsx'
 import Register from './pages/Register.jsx'
+import VoiceCommand from './components/VoiceCommand.jsx'
 
 function App() {
   return (
     <div className="App">
+      <VoiceCommand />
       <Navbar />
       <div className='pt-64'>
         <Routes>
@@ -21,9 +23,9 @@ function App() {
           <Route path='/login' element={<Login />} />       <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/cart" element={<Cart />} />
           <Route path="/product/:id" element={<ProductDetails />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/cart" element={<Cart />} />
           {/* Add more routes as needed */}
           <Route path="*" element={<h1>404 Not Found</h1>} />
           {/* Catch-all route for 404 errors */}
