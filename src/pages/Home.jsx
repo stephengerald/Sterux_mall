@@ -1,38 +1,46 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import products from "../data/products";
 import ProductCard from "../components/ProductCard";
-import { FiSearch } from "react-icons/fi";
+import NewArrivals from "../components/NewArrivals";
+import Discounts from "../components/discounts";
+import CartContext from "../context/CartContext";
 
 function Home() {
-  const [search, setSearch] = useState("");
+  const { dispatch } = useContext(CartContext);
+  const navigate = useNavigate();
 
-  const filteredProducts = products.filter(product =>
-    product.name.toLowerCase().includes(search.toLowerCase())
-  );
+  const handleAddToCartAndView = (product) => {
+    dispatch({ type: "ADD_TO_CART", product });
+    navigate(`/product/${product.id}`);
+  };
 
   return (
     <div className="min-h-screen bg-gray-100 py-10">
       <div className="container mx-auto">
+        {/* Featured Products */}
         <h1 className="text-3xl font-bold mb-8 text-center">Featured Products</h1>
-        <div className="flex justify-center mb-8">
-          <div className="relative w-full max-w-md">
-            <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400">
-              <FiSearch />
-            </span>
-            <input
-              type="text"
-              placeholder="Search products..."
-              value={search}
-              onChange={e => setSearch(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border rounded shadow"
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-12">
+          {products.map((product) => (
+            <ProductCard
+              key={product.id}
+              product={product}
+              onAddToCartAndView={handleAddToCartAndView}
             />
-          </div>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-          {filteredProducts.map((product) => (
-            <ProductCard key={product.id} product={product} />
           ))}
         </div>
+
+        {/* New Arrivals */}
+        <h2 className="text-2xl font-bold mb-6 text-center text-green-700 transition-colors duration-300">
+          🌟 New Arrivals
+        </h2>
+        <NewArrivals />
+
+        {/* Discounts */}
+        <h2 className="text-2xl font-bold mb-6 text-center text-red-700 transition-colors duration-300">
+          🔥 Discounts
+        </h2>
+        <Discounts />
       </div>
     </div>
   );
