@@ -10,12 +10,12 @@ import ProductDetails from './pages/ProductDetails.jsx'
 import Checkout from './pages/Checkout.jsx'
 import Login from './pages/Login.jsx'
 import Register from './pages/Register.jsx'
-import VoiceCommand from './components/VoiceCommand.jsx'
+import ScreenshotListener from './components/ScreenshotListener.jsx'
 
 function App() {
   return (
     <div className="App">
-      <VoiceCommand />
+      <ScreenshotListener />
       <Navbar />
       <div className='pt-64'>
         <Routes>
