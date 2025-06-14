@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import products from "../data/products";
 import ProductCard from "../components/ProductCard";
 import NewArrivals from "../components/NewArrivals";
-import Discounts from "../components/discounts";
+import Discounts from "../components/Discounts"
 import CartContext from "../context/CartContext";
 
 function Home() {
