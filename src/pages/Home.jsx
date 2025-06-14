@@ -16,7 +16,7 @@ function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-100 py-10">
+    <div className="min-h-screen bg-gray-100 pt-24 sm:pt-28 md:pt-32 py-10">
       <div className="container mx-auto">
         {/* Featured Products */}
         <h1 className="text-3xl font-bold mb-8 text-center">Featured Products</h1>
