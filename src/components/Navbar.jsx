@@ -20,13 +20,40 @@ function Navbar() {
   return (
     <>
       <nav className="fixed top-0 left-0 w-full z-50 bg-yellow-400 text-black shadow transition-all duration-300">
-        <div className="max-w-7xl mx-auto px-4 py-4 transition-all duration-300">
-          {/* Top row: Logo, Home, Cart, Sidebar */}
-          <div className="flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between transition-all duration-300">
+          {/* Top row for small screens, full row for large */}
+          <div className="flex items-center justify-between w-full sm:w-auto">
             <div className="text-2xl font-bold tracking-wide transition-colors duration-300">
               Sterux Mall
             </div>
-            <div className="flex items-center space-x-6">
+            {/* Hamburger only on small screens */}
+            <button
+              onClick={() => setSidebarOpen(true)}
+              className="text-2xl focus:outline-none sm:hidden"
+              aria-label="Open menu"
+            >
+              <FaBars />
+            </button>
+            {/* Main nav for large screens */}
+            <div className="hidden sm:flex items-center space-x-6 ml-8">
+              <Link to="/" className="hover:text-blue-200 transition-colors duration-300 text-lg font-medium">Home</Link>
+              <Link to="/about" className="hover:text-blue-200 transition-colors duration-300 text-lg font-medium">About</Link>
+              <Link to="/contact" className="hover:text-blue-200 transition-colors duration-300 text-lg font-medium">Contact</Link>
+              <Link to="/register" className="hover:text-blue-200 transition-colors duration-300 text-lg font-medium">Register</Link>
+              <Link to="/login" className="hover:text-blue-200 transition-colors duration-300 text-lg font-medium">Login</Link>
+              <div className="relative">
+                <Link to="/cart" className="hover:text-blue-200 transition-colors duration-300">
+                  <FaShoppingCart className="text-xl transition-transform duration-300 hover:scale-110" />
+                  {cartCount > 0 && (
+                    <span className="absolute -top-2 -right-3 bg-red-600 text-white text-xs font-bold rounded-full px-2 py-0.5">
+                      {cartCount}
+                    </span>
+                  )}
+                </Link>
+              </div>
+            </div>
+            {/* Home and Cart for small screens */}
+            <div className="flex items-center space-x-6 sm:hidden">
               <Link to="/" className="hover:text-blue-200 transition-colors duration-300 text-lg font-medium">Home</Link>
               <div className="relative">
                 <Link to="/cart" className="hover:text-blue-200 transition-colors duration-300">
@@ -38,21 +65,13 @@ function Navbar() {
                   )}
                 </Link>
               </div>
-              {/* Hamburger menu for small screens */}
-              <button
-                onClick={() => setSidebarOpen(true)}
-                className="text-2xl focus:outline-none sm:hidden"
-                aria-label="Open menu"
-              >
-                <FaBars />
-              </button>
             </div>
           </div>
           {/* Search bar: below on mobile, inline on sm+ */}
           <form
             onSubmit={handleSearch}
             className="mt-3 sm:mt-0 w-full max-w-xs sm:max-w-md border border-black rounded transition-shadow duration-300 hover:shadow-lg
-                       sm:absolute sm:right-8 sm:top-1/2 sm:-translate-y-1/2"
+                       sm:ml-8 sm:w-80"
           >
             <div className="relative">
               <input
