@@ -5,6 +5,7 @@ import ProductCard from "../components/ProductCard";
 import NewArrivals from "../components/NewArrivals";
 import Discounts from "../components/Discounts"
 import CartContext from "../context/CartContext";
+import Hero from "../components/Hero";
 
 function Home() {
   const { dispatch } = useContext(CartContext);
@@ -17,6 +18,7 @@ function Home() {
 
   return (
     <div className="min-h-screen bg-gray-100 pt-24 sm:pt-28 md:pt-32 py-10">
+      <Hero />
       <div className="container mx-auto">
         {/* Featured Products */}
         <h1 className="text-3xl font-bold mb-8 text-center">Featured Products</h1>
