@@ -22,7 +22,7 @@ function App() {
       {/* Voice command screenshot component */}
       {/* This component listens for voice commands and takes screenshots */}
       <Navbar />
-      <div className='pt-40'>
+      <div className='pt-20'>
         <Routes>
           <Route path='/register' element={<Register />} />
           <Route path='/login' element={<Login />} />       <Route path="/" element={<Home />} />

@@ -21,7 +21,7 @@ function Home() {
       <Hero />
       <div className="container mx-auto">
         {/* Featured Products */}
-        <h1 className="text-3xl font-bold mb-8 text-center">Featured Products</h1>
+        <h1 className="text-3xl font-bold mt-8 mb-8 text-center">Featured Products</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 mb-12">
           {products.map((product) => (
             <ProductCard
