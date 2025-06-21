@@ -13,7 +13,7 @@ import Register from './pages/Register.jsx'
 import VoiceScreenshot from './components/VoiceScreenshot.jsx'
 import NewArrivals from './components/NewArrivals.jsx'
 import Discounts from './components/Discounts.jsx'
-
+import Footer from './components/Footer.jsx'
 
 function App() {
   return (
@@ -38,6 +38,9 @@ function App() {
           {/* Catch-all route for 404 errors */}
         </Routes>
       </div>
+      <Footer />
+      {/* Footer component */}
+      {/* This component contains the footer with links and copyright information */}
     </div>
     )
 }

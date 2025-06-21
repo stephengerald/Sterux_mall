@@ -1,41 +1,41 @@
 const newArrivals = [
   {
-    id: 101,
-    name: "Wireless Earbuds",
-    price: 49.99,
-    image: "https://via.placeholder.com/200x200?text=Earbuds",
-    description: "Latest wireless earbuds with high-fidelity sound."
+    id: 1,
+    name: "Smart Watch",
+    price: 99.99,
+    image: "https://m.media-amazon.com/images/I/71w8xejohYL._AC_SL1500_.jpg",
+    description: "Track your fitness and notifications on the go."
   },
   {
-    id: 102,
+    id: 2,
     name: "Smart Fitness Band",
     price: 29.99,
     image: "https://via.placeholder.com/200x200?text=Fitness+Band",
     description: "Track your health and fitness with style."
   },
   {
-    id: 101,
+    id: 3,
     name: "Wireless Earbuds",
     price: 49.99,
     image: "https://via.placeholder.com/200x200?text=Earbuds",
     description: "Latest wireless earbuds with high-fidelity sound."
   },
   {
-    id: 102,
+    id: 4,
     name: "Smart Fitness Band",
     price: 29.99,
     image: "https://via.placeholder.com/200x200?text=Fitness+Band",
     description: "Track your health and fitness with style."
   },
   {
-    id: 101,
+    id: 5,
     name: "Wireless Earbuds",
     price: 49.99,
     image: "https://via.placeholder.com/200x200?text=Earbuds",
     description: "Latest wireless earbuds with high-fidelity sound."
   },
   {
-    id: 102,
+    id: 6,
     name: "Smart Fitness Band",
     price: 29.99,
     image: "https://via.placeholder.com/200x200?text=Fitness+Band",
