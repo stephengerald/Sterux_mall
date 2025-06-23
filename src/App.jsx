@@ -17,15 +17,14 @@ import Footer from './components/Footer.jsx'
 
 function App() {
   return (
-    <div className="App">
+    <div className="App flex flex-col min-h-screen bg-gray-100 dark:bg-gray-900 transition-colors duration-300">
       <VoiceScreenshot />
-      {/* Voice command screenshot component */}
-      {/* This component listens for voice commands and takes screenshots */}
       <Navbar />
-      <div className='pt-20 sm:pt-24'>
+      <div className="flex-1 pt-20 sm:pt-24">
         <Routes>
-          <Route path='/register' element={<Register />} />
-          <Route path='/login' element={<Login />} />       <Route path="/" element={<Home />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/product/:id" element={<ProductDetails />} />
@@ -33,16 +32,12 @@ function App() {
           <Route path="/cart" element={<Cart />} />
           <Route path="/new-arrivals" element={<NewArrivals />} />
           <Route path="/discounts" element={<Discounts />} />
-          {/* Add more routes as needed */}
           <Route path="*" element={<h1>404 Not Found</h1>} />
-          {/* Catch-all route for 404 errors */}
         </Routes>
       </div>
       <Footer />
-      {/* Footer component */}
-      {/* This component contains the footer with links and copyright information */}
     </div>
-    )
+  )
 }
 
-export default App
+export default App;

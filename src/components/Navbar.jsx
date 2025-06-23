@@ -1,15 +1,30 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { FaShoppingCart, FaBars, FaTimes } from 'react-icons/fa';
+import { FaShoppingCart, FaBars, FaTimes, FaMoon, FaSun } from 'react-icons/fa';
 import CartContext from '../context/CartContext';
 
 function Navbar() {
   const [search, setSearch] = useState('');
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [isDark, setIsDark] = useState(
+    () =>
+      localStorage.theme === 'dark' ||
+      (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)
+  );
   const navigate = useNavigate();
   const { cart } = useContext(CartContext);
 
   const cartCount = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+
+  useEffect(() => {
+    if (isDark) {
+      document.documentElement.classList.add('dark');
+      localStorage.theme = 'dark';
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.theme = 'light';
+    }
+  }, [isDark]);
 
   const handleSearch = (e) => {
     e.preventDefault();
@@ -19,7 +34,7 @@ function Navbar() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 w-full z-50 bg-yellow-400 text-black shadow transition-all duration-300">
+      <nav className="fixed top-0 left-0 w-full z-50 bg-yellow-400 text-black dark:bg-gray-900 dark:text-gray-100 shadow transition-all duration-300">
         <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between transition-all duration-300">
           {/* Top row for small screens, full row for large */}
           <div className="flex items-center justify-between w-full sm:w-auto">
@@ -29,7 +44,7 @@ function Navbar() {
             {/* Hamburger only on small screens */}
             <button
               onClick={() => setSidebarOpen(true)}
-              className="text-2xl focus:outline-none sm:hidden"
+              className="text-2xl focus:outline-none sm:hidden ml-4"
               aria-label="Open menu"
             >
               <FaBars />
@@ -51,9 +66,16 @@ function Navbar() {
                   )}
                 </Link>
               </div>
+              <button
+                onClick={() => setIsDark((prev) => !prev)}
+                className="ml-2 p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-yellow-300 transition"
+                aria-label="Toggle dark mode"
+              >
+                {isDark ? <FaSun /> : <FaMoon />}
+              </button>
             </div>
-            {/* Home and Cart for small screens */}
-            <div className="flex items-center space-x-6 sm:hidden">
+            {/* Home, Cart, and Dark Mode for small screens */}
+            <div className="flex items-center space-x-4 sm:hidden">
               <Link to="/" className="hover:text-blue-200 transition-colors duration-300 text-lg font-medium">Home</Link>
               <div className="relative">
                 <Link to="/cart" className="hover:text-blue-200 transition-colors duration-300">
@@ -65,13 +87,19 @@ function Navbar() {
                   )}
                 </Link>
               </div>
+              <button
+                onClick={() => setIsDark((prev) => !prev)}
+                className="ml-2 p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-yellow-300 transition"
+                aria-label="Toggle dark mode"
+              >
+                {isDark ? <FaSun /> : <FaMoon />}
+              </button>
             </div>
           </div>
           {/* Search bar: below on mobile, inline on sm+ */}
           <form
             onSubmit={handleSearch}
-            className="mt-3 sm:mt-0 w-full max-w-xs sm:max-w-md border border-black rounded transition-shadow duration-300 hover:shadow-lg
-                       sm:ml-8 sm:w-80"
+            className="mt-3 sm:mt-0 w-full max-w-xs sm:max-w-md border border-black dark:border-gray-700 rounded transition-shadow duration-300 hover:shadow-lg sm:ml-8 sm:w-80"
           >
             <div className="relative">
               <input
@@ -79,7 +107,7 @@ function Navbar() {
                 placeholder="Search products..."
                 value={search}
                 onChange={e => setSearch(e.target.value)}
-                className="w-full pl-3 pr-10 py-2 rounded border-none text-black transition-colors duration-300 focus:bg-yellow-100"
+                className="w-full pl-3 pr-10 py-2 rounded border-none text-black dark:text-gray-100 dark:bg-gray-800 transition-colors duration-300 focus:bg-yellow-100 dark:focus:bg-gray-700"
               />
               <button
                 type="submit"
@@ -98,7 +126,7 @@ function Navbar() {
       {/* Sidebar for small screens */}
       {sidebarOpen && (
         <div className="fixed inset-0 z-50 bg-black bg-opacity-40 flex">
-          <div className="w-64 bg-white h-full shadow-lg p-6 flex flex-col">
+          <div className="w-64 bg-white dark:bg-gray-900 h-full shadow-lg p-6 flex flex-col">
             <button
               onClick={() => setSidebarOpen(false)}
               className="self-end text-2xl mb-6"
