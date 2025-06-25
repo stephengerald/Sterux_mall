@@ -34,7 +34,7 @@ function Navbar() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 w-full z-50 bg-yellow-400 text-black dark:bg-gray-900 dark:text-gray-100 shadow transition-all duration-300">
+      <nav className="fixed top-0 left-0 w-full z-50 bg-yellow-400 text-black dark:bg-gray-800 dark:text-gray-100 shadow transition-all duration-300">
         <div className="max-w-7xl mx-auto px-4 py-4 flex flex-col sm:flex-row sm:items-center sm:justify-between transition-all duration-300">
           {/* Top row for small screens, full row for large */}
           <div className="flex items-center justify-between w-full sm:w-auto">

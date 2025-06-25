@@ -38,10 +38,10 @@ function Hero() {
     <section
       className={`w-full bg-gradient-to-br ${slide.bg} py-16 px-4 flex flex-col items-center text-center transition-all duration-700`}
     >
-      <h1 className="text-4xl sm:text-5xl font-extrabold mb-4 text-gray-900 dark:text-yellow-300">
+      <h1 className="text-4xl sm:text-5xl font-extrabold mb-4 text-gray-900 dark:text-blacks">
         {slide.title}
       </h1>
-      <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-200 mb-8 max-w-2xl">
+      <p className="text-lg sm:text-xl text-gray-700 dark:text-gray-500 mb-8 max-w-2xl">
         {slide.desc}
       </p>
       <div className="flex flex-col sm:flex-row gap-4">
